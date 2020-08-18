@@ -1,5 +1,5 @@
 <template>
-  <Header title="toelis" />
+  <Header title="Toelis" />
   <PostList />
 </template>
 
@@ -15,7 +15,7 @@ export default {
   },
   data() {
     return {
-      appName: 'toelis',
+      appName: 'Toelis',
     }
   }
 }

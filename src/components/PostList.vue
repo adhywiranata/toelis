@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="wrapper">
     <div class="h-padded">
       <h1>My Posts</h1>
     </div>
@@ -25,7 +25,7 @@
 </template>
 
 <style scoped>
-  .container {
+  .wrapper {
     width: 30%;
     height: 100vh;
     display: flex;
