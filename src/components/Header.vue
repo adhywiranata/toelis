@@ -16,6 +16,10 @@
     background: teal;
   }
 
+  h1 {
+    margin: 0;
+  }
+
   .nav {
     color: white;
     list-style-type: none;
