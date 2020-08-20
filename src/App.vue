@@ -1,5 +1,5 @@
 <template>
-  <Header title="Toelis" />
+  <app-header title="Toelis" />
   <div class="router-wrapper">
     <router-view></router-view>
   </div>
@@ -19,7 +19,7 @@ import Header from './components/Header.vue'
 export default {
   name: 'App',
   components: {
-    Header,
+    'app-header': Header,
   },
   data() {
     return {
