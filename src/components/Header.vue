@@ -1,17 +1,23 @@
 <template>
   <header>
     <h1>{{ title }}</h1>
-    <!-- <ul
-      class="nav"
-      v-for="navItem in navItems"
-      v-bind:key="navItem.id"
-    >
-      <li>{{navItem.text}}</li>
-    </ul> -->
-    <div>
-      <button class="theme-toggler"><i class="icon icon-sun"></i></button>
-      <!-- <button class="theme-toggler"><i class="icon icon-moon"></i></button> -->
-    </div>
+    <nav>
+      <ul
+        class="nav"
+      >
+        <a
+          href="/" 
+          v-for="navItem in navItems"
+          v-bind:key="navItem.id"
+        >
+          <li>{{navItem.text}}</li>
+        </a>
+      </ul>
+      <div>
+        <button v-if="getTheme === 'light'" class="theme-toggler" v-on:click="setDarkTheme"><i class="icon icon-sun"></i></button>
+        <button v-if="getTheme === 'dark'" class="theme-toggler" v-on:click="setLightTheme"><i class="icon icon-moon"></i></button>
+      </div>
+    </nav>
   </header>
 </template>
 
@@ -31,14 +37,14 @@
   }
 
   .theme-toggler {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: white;
     background: none;
     border: none;
     cursor: pointer;
     outline: none;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -60,6 +66,11 @@
     zoom: 1.2;
   }
 
+  nav {
+    display: flex;
+    flex-direction: row;
+  }
+
   h1 {
     margin: 0;
     font-size: 1.5rem;
@@ -70,6 +81,25 @@
     color: white;
     list-style-type: none;
     padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .nav a {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    color: white;
+    opacity: 0.7;
+    border-right: 1px solid rgba(255, 255, 255, .3);
+  }
+
+  .nav a:last-child {
+    border-right: 0;
+  }
+
+  .nav a:hover {
+    opacity: 1;
   }
 </style>
 
@@ -83,12 +113,26 @@ export default {
     return {
       navItems: [
         { id: 1, text: 'Home' },
-        { id: 2, text: 'About' },
+        { id: 2, text: 'Toelisans' },
+        { id: 3, text: 'About Toelis' },
       ],
     }
   },
   mounted() {
-    console.log('mounted?');
-  }
+    console.log('mounted?')
+  },
+  methods: {
+    setLightTheme() {
+      this.$store.dispatch('setThemeToLight')
+    },
+    setDarkTheme() {
+      this.$store.dispatch('setThemeToDark')
+    },
+  },
+  computed: {
+    getTheme() {
+      return this.$store.state.theme
+    }
+  },
 }
 </script>
