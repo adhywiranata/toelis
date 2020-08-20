@@ -5,13 +5,14 @@
       <ul
         class="nav"
       >
-        <a
-          href="/" 
+        <li
           v-for="navItem in navItems"
           v-bind:key="navItem.id"
         >
-          <li>{{navItem.text}}</li>
-        </a>
+          <router-link :to="{name: navItem.routeName}">
+            {{navItem.text}}
+          </router-link>
+        </li>
       </ul>
       <div>
         <button v-if="getTheme === 'light'" class="theme-toggler" v-on:click="setDarkTheme"><i class="icon icon-sun"></i></button>
@@ -112,9 +113,9 @@ export default {
   data() {
     return {
       navItems: [
-        { id: 1, text: 'Home' },
-        { id: 2, text: 'Toelisans' },
-        { id: 3, text: 'About Toelis' },
+        { id: 1, text: 'Home', routeName: 'home' },
+        { id: 2, text: 'Toelisans', routeName: 'browse' },
+        { id: 3, text: 'About Toelis', routeName: 'about' },
       ],
     }
   },
